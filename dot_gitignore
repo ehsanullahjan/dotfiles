@@ -1,0 +1,76 @@
+syntax: glob
+
+~*
+*.swp
+*.log
+nohup.out
+.DS_Store
+.bash_history
+.zsh_history
+
+# Archives
+*.zip
+*.7z
+*.gz
+*.tar
+*.tar.gz
+
+# Local/secret config
+.env*
+.envrc
+.flaskenv
+.mise*.toml
+.secrets.toml
+cosign.key
+http-client.private.env.json
+
+# Terraform artifacts
+.terraform/
+*.tfstate*
+
+# Java artifacts
+*.class
+*.jar
+*.war
+*.ear
+*.car
+*.rar
+*.bar
+*.sar
+*.ser
+target/
+
+# Python artifacts
+*.pex
+__pycache__/
+venv/
+.venv/
+venv.nosync/
+.venv.nosync/
+
+# VS Code artifacts
+.vscode/
+
+# IntelliJ artifacts
+out/
+.idea/
+*.iml
+*.eml
+*.ipr
+*.iws
+*.uml
+
+# Eclipse artifacts
+.settings/
+.metadata/
+*.factorypath
+*.project
+*.classpath
+*.springBeans
+
+# NetBeans artifacts
+nb-configuration.xml
+
+# Sublime Text artifacts
+*.sublime-project
+*.sublime-workspace
