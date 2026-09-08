@@ -1,0 +1,73 @@
+# https://alacritty.org/config-alacritty.html
+
+[general]
+import = [
+  "~/.config/alacritty/theme.toml",
+]
+
+[env]
+TERM = "xterm-256color"
+
+[window]
+startup_mode = "maximized"
+# startup_mode = "windowed"
+# dimensions = {
+#   columns = 116,
+#   lines = 38,
+# }
+
+decorations = "full"
+
+padding = {x = 4, y = 4}
+dynamic_padding = true
+
+option_as_alt = "both"
+
+[scrolling]
+history = 50000
+multiplier = 3
+
+# [font]
+# normal = { family = "Adwaita Mono" }
+# normal = { family = "AdwaitaMono Nerd Font" }
+# normal = { family = "CaskaydiaMono Nerd Font" }
+# normal = { family = "FiraMono Nerd Font" }
+# normal = { family = "JetBrainsMono Nerd Font" }
+
+# size = 11
+# offset = { x = 0, y = 0 }
+# glyph_offset = { x = 0, y = 0 }
+
+[bell]
+duration = 0
+
+[selection]
+save_to_clipboard = true
+
+[cursor]
+style = {
+    shape = "beam",
+    blinking = "off",
+}
+
+vi_mode_style = {
+    shape = "block",
+    blinking = "off",
+}
+
+unfocused_hollow = true
+
+[terminal]
+shell = { program = {{ .shell_path | quote }} }
+
+[mouse]
+hide_when_typing = true
+bindings = [
+  { mouse = "Middle", action = "Paste" },
+]
+
+[keyboard]
+bindings = [
+    { key = "F11", action = "ToggleFullscreen" },
+    { key = "N", mods = "Control|Shift", action = "CreateNewWindow" },
+]

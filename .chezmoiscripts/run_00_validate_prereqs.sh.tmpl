@@ -1,0 +1,17 @@
+#!/usr/bin/env bash
+
+set -euo pipefail
+[[ ${DEBUG:-0} == 1 ]] && set -x
+
+require_commands() {
+	local cmd
+
+	for cmd in "$@"; do
+		if ! command -v "$cmd" >/dev/null 2>&1; then
+			printf "Error: %s is required\n" "$cmd" >&2
+			return 1
+		fi
+	done
+}
+
+require_commands curl git {{ .shell_name }}
