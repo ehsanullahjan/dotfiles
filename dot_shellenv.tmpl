@@ -2,16 +2,16 @@
 
 # Set editor env
 if command -v nvim >/dev/null; then
-    export EDITOR='nvim'
+    export EDITOR="nvim"
 else
-    export EDITOR='vim'
+    export EDITOR="vim"
 fi
 
 # Set completions env
-export CARAPACE_BRIDGES='zsh,fish,bash,inshellisense'
+export CARAPACE_BRIDGES="zsh,fish,bash,inshellisense"
 
 # Set terminal env
-export TERM='xterm-256color'
+export TERM={{ .terminal_term | quote }}
 export STARSHIP_CONFIG="$HOME/.config/starship/starship.toml"
 
 # Set tools env

@@ -13,8 +13,8 @@ set -g default-command ""
 
 # Upgrade terminal
 set -g allow-passthrough on
-set -g default-terminal "xterm-256color"
-set -as terminal-features ",xterm-256color:RGB"
+set -g default-terminal {{ .terminal_term | quote }}
+set -as terminal-features ",{{ .terminal_term }}:RGB"
 # set -g default-terminal "tmux-256color"
 # set -as terminal-features ",tmux-256color:RGB"
 
