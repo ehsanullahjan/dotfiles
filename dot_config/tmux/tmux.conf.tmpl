@@ -1,0 +1,165 @@
+# Use C-s as the prefix key
+unbind C-b
+set -g prefix C-s
+bind C-s send-prefix
+
+# Reload config with P-r
+bind R source ~/.config/tmux/tmux.conf \;\
+    display "Config & plugins reloaded"
+
+# Set default shell
+set -g default-shell {{ .shell_path }}
+set -g default-command ""
+
+# Upgrade terminal
+set -g allow-passthrough on
+set -g default-terminal "xterm-256color"
+set -as terminal-features ",xterm-256color:RGB"
+# set -g default-terminal "tmux-256color"
+# set -as terminal-features ",tmux-256color:RGB"
+
+# Set terminal title
+#   #S = Session name
+#   #I = Window index
+#   #P = Pane index
+#   #T Pane or command name
+#   #W = Window or command name
+set -g set-titles on
+set -g set-titles-string "#h:#S:#W ➜ #T"
+
+# Set window title to `base-dir [pane-cmd]` unless explicitly renamed
+set -g automatic-rename on
+# set -g automatic-rename-format '#{b:pane_current_path}#{?#{m/r:^(zsh|bash|fish)$,#{pane_current_command}},, [#{pane_current_command}]}'
+set -g automatic-rename-format '#{b:pane_current_path} [#{pane_current_command}]'
+set -g window-status-format '#W'
+set -g window-status-current-format '#W'
+
+# Set sensible options
+set -sg escape-time 0
+set -g repeat-time 500
+set -g display-time 1000
+set -g status-interval 5
+set -g status-keys emacs
+set -g status-position top
+set -g status-justify "left"
+set -g status-left-length 256
+set -g status-right-length 512
+set -g history-limit 65536
+set -g set-clipboard on
+set -g focus-events on
+setw -g aggressive-resize on
+
+# Enable activity alerts
+setw -g monitor-activity on
+set -g visual-activity on
+
+# Enable mouse
+set -g mouse on
+
+# Start window and panes indices at 1
+set -g base-index 1
+setw -g pane-base-index 1
+
+# Quick window selection
+bind -r p select-window -t :-
+bind -r n select-window -t :+
+
+# Quick window jump
+bind-key -n M-1 select-window -t 1
+bind-key -n M-2 select-window -t 2
+bind-key -n M-3 select-window -t 3
+bind-key -n M-4 select-window -t 4
+bind-key -n M-5 select-window -t 5
+bind-key -n M-6 select-window -t 6
+bind-key -n M-7 select-window -t 7
+bind-key -n M-8 select-window -t 8
+bind-key -n M-9 select-window -t 9
+
+# Create windows, panes and popups with cwd
+# bind c new-window -c "#{pane_current_path}"
+
+# Create panes and popups with cwd
+bind -n M-s split-window -v -c "#{pane_current_path}"
+bind -n M-v split-window -h -c "#{pane_current_path}"
+
+# Create persistent, per-window popups with cwd
+set-hook -g session-closed 'run-shell -b "~/.config/tmux/bin/kill-popup.sh"'
+bind -n M-p run-shell "~/.config/tmux/bin/toggle-popup.sh '#{session_name}' '#{pane_current_path}'"
+
+# Move between panes with Alt + arrow keys
+bind -n M-Left select-pane -L -Z
+bind -n M-Down select-pane -D -Z
+bind -n M-Up select-pane -U -Z
+bind -n M-Right select-pane -R -Z
+
+# Resize panes with arrow keys
+bind -r Left resize-pane -L 5
+bind -r Down resize-pane -D 5
+bind -r Up resize-pane -U 5
+bind -r Right resize-pane -R 5
+
+# Enable vi keys for buffer management
+setw -g mode-keys vi
+bind -T copy-mode-vi v send -X begin-selection
+bind -T copy-mode-vi y send -X copy-pipe-and-cancel {{ .clipboard_copy_cmd | quote }}
+bind -T copy-mode-vi r send -X rectangle-toggle
+bind P paste-buffer
+
+# Enable mouse for buffer management
+bind -T copy-mode-vi MouseDragEnd1Pane send -X copy-pipe-and-cancel {{ .clipboard_copy_cmd | quote }}
+bind-key -n MouseDown2Pane paste-buffer
+
+# Set custom bindings for useful commands
+bind s setw synchronize-panes
+
+# Enable tmux plugin manager
+set -g @plugin 'tmux-plugins/tpm'
+
+# Enable tmux theme plugin
+source ~/.config/tmux/theme.conf
+
+# Enable tmux mode-indicator plugin
+set -g @plugin 'MunifTanjim/tmux-mode-indicator'
+
+#-- tmux mode-indicator: use basic corners --##
+set -g @mode_indicator_empty_prompt  " #S:#P  "
+set -g @mode_indicator_prefix_prompt " #S:#P  "
+set -g @mode_indicator_copy_prompt   " #S:#P  "
+set -g @mode_indicator_sync_prompt   " #S:#P  "
+set -g @mode_indicator_prefix_mode_style "bg=#{@thm_blue},fg=#{@thm_crust}"
+set -g @mode_indicator_copy_mode_style   "bg=#{@thm_yellow},fg=#{@thm_crust}"
+set -g @mode_indicator_sync_mode_style   "bg=#{@thm_red},fg=#{@thm_crust}"
+set -g @mode_indicator_empty_mode_style  "bg=#{@thm_teal},fg=#{@thm_crust}"
+
+# ##-- tmux mode-indicator: use rounded corners --##
+# set -g @mode_indicator_prefix_prompt '#[reverse] #S:#P  #[noreverse]'
+# set -g @mode_indicator_copy_prompt   '#[reverse] #S:#P  #[noreverse]'
+# set -g @mode_indicator_sync_prompt   '#[reverse] #S:#P  #[noreverse]'
+# set -g @mode_indicator_empty_prompt  '#[reverse] #S:#P  #[noreverse]'
+# set -g @mode_indicator_prefix_mode_style "fg=#{@thm_blue},bg=default"
+# set -g @mode_indicator_copy_mode_style   "fg=#{@thm_yellow},bg=default"
+# set -g @mode_indicator_sync_mode_style   "fg=#{@thm_red},bg=default"
+# set -g @mode_indicator_empty_mode_style  "fg=#{@thm_teal},bg=default"
+
+# Customize status-line modules on the left side
+set -g status-left "#{tmux_mode_indicator}"
+set -ag status-left " "
+
+# Customize status-line modules on the right side
+set -g status-right "#{E:@catppuccin_status_application}"
+# set -agF status-right "#{E:@catppuccin_status_load}"
+set -agF status-right "#{E:@catppuccin_status_cpu}"
+set -agF status-right "#{E:@catppuccin_status_ram}"
+# set -agF status-right "#{E:@catppuccin_status_battery}"
+
+# Enable cpu, ram and battery monitoring plugins
+set -g @plugin "tmux-plugins/tmux-cpu"
+set -g @plugin "tmux-plugins/tmux-battery"
+
+# Enable & customize tmux resurrect plugin for persistent sessions
+set -g @plugin "tmux-plugins/tmux-resurrect"
+set -g @resurrect-save "M-s"
+set -g @resurrect-restore "M-r"
+
+# Load tmux plugins
+run '~/.config/tmux/plugins/tpm/tpm'
