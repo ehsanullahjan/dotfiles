@@ -1,0 +1,50 @@
+# https://github.com/systemd/systemd/issues/33083#issuecomment-2372682205
+# export SYSTEMD_SLEEP_FREEZE_USER_SESSIONS=false
+# https://github.com/systemd/systemd/issues/33083#issuecomment-2370781251
+# swap to another TTY and run systemctl thaw user.slice
+
+# Safely prepend path (idempotent & posix compliant)
+safe_prepend_path() {
+    if [ -d "$1" ]; then
+        case ":$PATH:" in
+        *":$1:"*) ;;
+        *) PATH="$1:$PATH" ;;
+        esac
+    fi
+}
+
+# Add bin dirs to path
+safe_prepend_path "$HOME/.local/bin"
+safe_prepend_path "$HOME/Local/bin"
+export PATH
+
+# # Set editor env
+# if command -v nvim >/dev/null; then
+#     export EDITOR='nvim'
+# else
+#     export EDITOR='vim'
+# fi
+
+# Set tools env
+export TLDR_AUTO_UPDATE_DISABLED=true
+
+# Set virt env in rootful mode
+# export LIBVIRT_DEFAULT_URI="qemu:///system"
+# export DOCKER_HOST=unix:///var/run/docker.sock
+
+# Set virt env in rootless mode (default)
+# export LIBVIRT_DEFAULT_URI="qemu:///session"
+# export DOCKER_HOST=unix:///run/user/1000/docker.sock
+
+# Set Podman env for Docker compatibility
+# XDG_RUNTIME_DIR=${XDG_RUNTIME_DIR:-/run/user/$(id -u)}
+# export DOCKER_HOST=unix://$XDG_RUNTIME_DIR/podman/podman.sock
+# export DOCKER_SOCK=$XDG_RUNTIME_DIR/podman/podman.sock
+
+# Set Kind env
+# export KIND_EXPERIMENTAL_PROVIDER=podman
+
+# Set Python env
+export PIP_REQUIRE_VIRTUALENV=true
+# export PYTHONSTARTUP="$HOME/.pythonrc"
+# export PYTHON3_USER_BASE="$(python3 -m site --user-base)"

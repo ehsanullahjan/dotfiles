@@ -1,0 +1,90 @@
+#!/usr/bin/env bash
+
+alias teller='fortune -s | cowsay -r | lolcat'
+alias giyan='fortune -s wisdom | cowsay -f llama'
+
+# Override cd with zoxide
+if command -v zoxide >/dev/null; then
+    alias cd='z'
+fi
+
+alias ..='cd ..'
+alias ...='cd ../..'
+alias ....='cd ../../..'
+
+alias zo='zoxide'
+alias ff="fzf --preview 'bat --style=numbers --color=always {}'"
+
+alias ls='ls -h --color=auto'
+
+# Override ls with eza or lsd
+if command -v eza >/dev/null; then
+    alias ls='eza -g --icons=auto'
+    alias lt='ls -T'
+elif command -v lsd >/dev/null; then
+    alias ls='lsd'
+    alias lt='ls --tree'
+fi
+
+alias ll='ls -l'
+alias llt='lt -l'
+alias l.='ls -d .*'
+alias l='ls -la'
+alias la='ls -lA'
+
+if ! command -v clipcopy >/dev/null; then
+    alias clipcopy='wl-copy'
+    alias clippaste='wl-paste'
+fi
+alias open='xdg-open'
+
+if command -v nvim >/dev/null; then
+    alias n='nvim'
+    alias n.='nvim .'
+else
+    alias n='vim'
+    alias n.='vim .'
+fi
+
+alias mv='mv -n'
+
+# Override cat with bat
+if command -v bat >/dev/null; then
+    alias cat='bat'
+fi
+
+alias gtui='lazygit'
+alias dtui='lazydocker'
+alias ptui='podman-tui'
+
+alias k='kubecolor'
+alias neofetch='fastfetch'
+alias tf='terraform'
+alias pp='prettier --parser'
+alias ffmpeg='ffmpeg -hide_banner'
+alias rl='ramalama'
+alias journalctl='journalctl --no-hostname'
+
+# Colorize output of certain commands with grc
+if command -v grc >/dev/null; then
+    alias df='grc df'
+    alias du='grc du'
+    alias free='grc free'
+    alias lsblk='grc lsblk'
+    alias lspci='grc lspci'
+    alias sensors='grc sensors'
+fi
+
+alias py='python3'
+alias py3='python3'
+alias pypy='pypy3'
+
+# Improve UX of certain interpreters with rlwrap
+if command -v rlwrap >/dev/null; then
+    alias scheme='rlwrap -r -c scheme'
+    alias clojure='rlwrap -r -c clojure'
+fi
+
+# Fix certain Java apps on high DPI displays
+alias visualvm='visualvm --laf Metal -J-Dsun.java2d.uiScale=2.0'
+alias plantuml='VMARGS="-Dsun.java2d.uiScale=2.0" plantuml'

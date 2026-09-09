@@ -1,0 +1,39 @@
+#!/usr/bin/env bash
+
+# Set editor env
+if command -v nvim >/dev/null; then
+    export EDITOR='nvim'
+else
+    export EDITOR='vim'
+fi
+
+# Set completions env
+export CARAPACE_BRIDGES='zsh,fish,bash,inshellisense'
+
+# Set terminal env
+export TERM='xterm-256color'
+export STARSHIP_CONFIG="$HOME/.config/starship/starship.toml"
+
+# Set tools env
+# export FZF_ALT_C_COMMAND=""
+# export SYSTEMD_PAGER=
+# export LESSOPEN="|lesspipe.sh %s"
+# export LESS_ADVANCED_PREPROCESSOR=1
+
+# Set man env
+if command -v bat >/dev/null; then
+    export MANROFFOPT="-c"
+    export MANPAGER="sh -c 'col -bx | bat -p -lman'"
+fi
+
+# Set AI env
+# export HSA_OVERRIDE_GFX_VERSION=11.0.0
+# export RAMALAMA_ENGINE=podman
+# export RAMALAMA_TRANSPORT=oci
+
+# Share distrobox binaries with host only
+if [ ! -f /run/.containerenv ]; then
+    DISTROBIN="$HOME/.local/share/distrobox/bin"
+    PATH=$(echo "$PATH" | awk -v RS=: -v ORS=: -v target="$DISTROBIN" '{gsub(/\n/, ""); if ($0 != target) print}' | sed 's/:$//')
+    export PATH="$PATH:$DISTROBIN"
+fi
