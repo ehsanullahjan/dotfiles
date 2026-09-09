@@ -1,0 +1,4 @@
+# Get portable login-shell env
+if [ -f ~/.profile ]; then
+  . ~/.profile
+fi
