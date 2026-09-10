@@ -1,5 +1,8 @@
 "$schema" = 'https://starship.rs/config-schema.json'
 
+# A lightly customized theme based on starship `nerd-font-symbols` preset. Obtain a stock
+# copy by running `starship preset nerd-font-symbols -fo ~/.config/starship/starship.toml`.
+
 [os]
 disabled = false
 
