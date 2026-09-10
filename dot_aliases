@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-alias teller='fortune -s | cowsay -r | lolcat'
+alias teller='fortune -s | cowsay'
 alias giyan='fortune -s wisdom | cowsay -f llama'
 
 # Override cd with zoxide
@@ -42,8 +42,8 @@ if command -v nvim >/dev/null; then
     alias n='nvim'
     alias n.='nvim .'
 else
-    alias n='vim'
-    alias n.='vim .'
+    alias n='devbox -- nvim'
+    alias n.='n .'
 fi
 
 alias mv='mv -n'
