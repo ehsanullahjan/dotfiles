@@ -7,9 +7,17 @@ starship_dir="$HOME/.config/starship"
 themes_dir="$starship_dir/themes"
 mkdir -p "$themes_dir"
 
-for theme in catppuccin-powerline gruvbox-rainbow nerd-font-symbols no-nerd-font pure-preset tokyo-night; do
+themes=(
+	catppuccin-powerline
+	gruvbox-rainbow
+	nerd-font-symbols
+	no-nerd-font
+	pure-preset
+	tokyo-night
+)
+for theme in "${themes[@]}"; do
 	theme_file="$themes_dir/$theme.toml"
 	if [[ ! -f "$theme_file" ]]; then
-		starship preset $theme -o "$theme_file"
+		starship preset "$theme" -o "$theme_file"
 	fi
 done
