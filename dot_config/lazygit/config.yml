@@ -1,0 +1,7 @@
+os:
+  editPreset: "nvim"
+git:
+  autoFetch: false
+  diffRenderers:
+    - colorArg: always
+      command: delta --paging=never
