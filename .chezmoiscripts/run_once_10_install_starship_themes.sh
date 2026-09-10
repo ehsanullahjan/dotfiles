@@ -13,8 +13,3 @@ for theme in catppuccin-powerline gruvbox-rainbow nerd-font-symbols no-nerd-font
 		starship preset $theme -o "$theme_file"
 	fi
 done
-
-default_theme="$starship_dir/theme.toml"
-if [[ ! -f "$default_theme" ]]; then
-	cp "$themes_dir/nerd-font-symbols.toml" "$default_theme"
-fi
