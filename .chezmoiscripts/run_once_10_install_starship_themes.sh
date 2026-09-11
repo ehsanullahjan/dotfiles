@@ -3,8 +3,7 @@
 set -euo pipefail
 [[ ${DEBUG:-0} == 1 ]] && set -x
 
-starship_dir="$HOME/.config/starship"
-themes_dir="$starship_dir/themes"
+themes_dir="$HOME/.config/starship/themes"
 mkdir -p "$themes_dir"
 
 themes=(
