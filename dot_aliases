@@ -50,7 +50,7 @@ alias mv='mv -n'
 
 # Override cat with bat
 if command -v bat >/dev/null; then
-    alias cat='bat'
+    alias cat='bat --style=plain'
 fi
 
 alias gtui='lazygit'
