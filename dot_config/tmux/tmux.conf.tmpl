@@ -13,10 +13,8 @@ set -g default-command ""
 
 # Upgrade terminal
 set -g allow-passthrough on
-set -g default-terminal {{ .terminal_type | quote }}
-set -as terminal-features ",{{ .terminal_type }}:RGB"
-# set -g default-terminal "tmux-256color"
-# set -as terminal-features ",tmux-256color:RGB"
+set -g default-terminal "tmux-256color"
+set -as terminal-features ",tmux-256color:RGB"
 
 # Set terminal title
 #   #S = Session name

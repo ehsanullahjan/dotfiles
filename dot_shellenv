@@ -11,7 +11,6 @@ fi
 export CARAPACE_BRIDGES="zsh,fish,bash,inshellisense"
 
 # Set terminal env
-export TERM={{ .terminal_type | quote }}
 export STARSHIP_CONFIG="$HOME/.config/starship/starship.toml"
 
 # Set tools env
