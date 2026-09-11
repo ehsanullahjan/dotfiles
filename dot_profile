@@ -25,6 +25,9 @@ export PATH
 #     export EDITOR='vim'
 # fi
 
+# Set shell env
+export STARSHIP_CONFIG="$HOME/.config/starship/starship.toml"
+
 # Set tools env
 export TLDR_AUTO_UPDATE_DISABLED=true
 

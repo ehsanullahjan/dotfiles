@@ -10,9 +10,6 @@ fi
 # Set completions env
 export CARAPACE_BRIDGES="zsh,fish,bash,inshellisense"
 
-# Set terminal env
-export STARSHIP_CONFIG="$HOME/.config/starship/starship.toml"
-
 # Set tools env
 # export FZF_ALT_C_COMMAND=""
 # export SYSTEMD_PAGER=
