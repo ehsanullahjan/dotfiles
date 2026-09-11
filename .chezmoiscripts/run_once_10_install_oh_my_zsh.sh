@@ -3,11 +3,9 @@
 set -euo pipefail
 [[ ${DEBUG:-0} == 1 ]] && set -x
 
-oh_my_zsh_dir="$HOME/.oh-my-zsh"
+oh_my_zsh_dir="${ZSH:-$HOME/.oh-my-zsh}"
 if [[ ! -d "$oh_my_zsh_dir" ]]; then
-	export CHSH='no'
-	export RUNZSH='no'
-	sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
+	git clone https://github.com/ohmyzsh/ohmyzsh.git "$oh_my_zsh_dir"
 fi
 
 zsh_custom_dir="${ZSH_CUSTOM:-$oh_my_zsh_dir/custom}"
