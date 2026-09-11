@@ -7,9 +7,6 @@ else
     export EDITOR="vim"
 fi
 
-# Set completions env
-export CARAPACE_BRIDGES="zsh,fish,bash,inshellisense"
-
 # Set tools env
 # export FZF_ALT_C_COMMAND=""
 # export SYSTEMD_PAGER=
