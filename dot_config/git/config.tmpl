@@ -29,7 +29,7 @@
 	trustExitCode = true
 [merge]
 	tool = bc
-	conflictstyle = diff3
+	conflictstyle = zdiff3
 [mergetool]
 	prompt = false
 	keepBackup = false
@@ -53,10 +53,9 @@
 	port = 4321
 [delta]
 	navigate = true
-	# side-by-side = true
-	# line-numbers = true
-	theme = catppuccin-macchiato
-	dark = true
-	light = false
+	side-by-side = false
+	line-numbers = true
+	theme = {{ .terminal_theme }}
+	{{ .terminal_scheme }} = true
 [oh-my-zsh]
 	hide-info = 0
