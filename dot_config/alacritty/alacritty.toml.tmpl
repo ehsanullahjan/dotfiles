@@ -6,7 +6,7 @@ import = [
 ]
 
 [env]
-TERM = "xterm-256color"
+TERM = {{ .terminal_type | quote }}
 
 [window]
 startup_mode = "maximized"
@@ -24,17 +24,12 @@ dynamic_padding = true
 option_as_alt = "both"
 
 [scrolling]
-history = 50000
+history = {{ .terminal_scrollback_limit }}
 multiplier = 3
 
-# [font]
-# normal = { family = "Adwaita Mono" }
-# normal = { family = "AdwaitaMono Nerd Font" }
-# normal = { family = "CaskaydiaMono Nerd Font" }
-# normal = { family = "FiraMono Nerd Font" }
-# normal = { family = "JetBrainsMono Nerd Font" }
-
-# size = 11
+[font]
+normal = { family = {{ .font_mono_family | quote }} }
+size = {{ .font_mono_size }}
 # offset = { x = 0, y = 0 }
 # glyph_offset = { x = 0, y = 0 }
 
