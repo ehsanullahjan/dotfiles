@@ -1,0 +1,71 @@
+command = {{ .shell_path }}
+
+font-family = {{ .font_mono_family }}
+font-size = {{ .font_mono_size }}
+font-feature = +lig
+font-thicken = true
+
+term = {{ .terminal_type }}
+# shell-integration = "detect"
+# detect|none|bash|zsh
+shell-integration-features = no-cursor
+scrollback-limit = {{ .terminal_scrollback_limit }}
+
+# cursor-style = block
+cursor-style-blink = false
+cursor-opacity = 1.0
+
+# theme = dark:Catppuccin Macchiato,light:Catppuccin Latte
+
+copy-on-select = clipboard
+mouse-hide-while-typing = true
+mouse-scroll-multiplier = 1
+
+background-opacity = 1.0
+background-blur = false
+unfocused-split-opacity = 1.0
+
+window-height = 40
+window-width = 130
+window-padding-balance = true
+window-save-state = "default"
+# default|never|always
+
+window-theme = "system"
+# auto|system|light|dark|ghostty
+window-decoration = "auto"
+# none|auto|client|server
+window-show-tab-bar = "auto"
+# auto|always|never
+
+keybind = ctrl+enter=unbind
+keybind = f11=toggle_fullscreen
+
+keybind = alt+left=unbind
+keybind = alt+down=unbind
+keybind = alt+up=unbind
+keybind = alt+right=unbind
+
+# alt + digit is used for window nav in tmux
+keybind = alt+digit_1=unbind
+keybind = alt+digit_2=unbind
+keybind = alt+digit_3=unbind
+keybind = alt+digit_4=unbind
+keybind = alt+digit_5=unbind
+keybind = alt+digit_6=unbind
+keybind = alt+digit_7=unbind
+keybind = alt+digit_8=unbind
+keybind = alt+digit_9=unbind
+keybind = alt+digit_0=unbind
+
+# alt + digit is used for window nav in tmux
+keybind = alt+1=unbind
+keybind = alt+2=unbind
+keybind = alt+3=unbind
+keybind = alt+4=unbind
+keybind = alt+5=unbind
+keybind = alt+6=unbind
+keybind = alt+7=unbind
+keybind = alt+8=unbind
+keybind = alt+9=unbind
+keybind = alt+0=unbind
