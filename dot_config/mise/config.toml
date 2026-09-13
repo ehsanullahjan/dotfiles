@@ -1,0 +1,45 @@
+[tools]
+usage = "latest"
+
+node = "lts"
+python = "3.14"
+pipx = "latest"
+uv = "latest"
+
+go = "latest"
+java = "temurin-25"
+mvnd = "latest"
+
+rust = "latest"
+zig = "0.15"
+
+lazydocker = "latest"
+
+kind = "latest"
+minikube = "latest"
+kubectl = "latest"
+kubecolor = "latest"
+
+# node tools
+"npm:@devcontainers/cli" = "latest"
+"npm:markdown-toc" = "latest"
+"npm:markdownlint-cli2" = "latest"
+"npm:prettier" = "latest"
+
+# python tools
+"pipx:bpython" = "latest"
+"pipx:httpie" = "latest"
+"pipx:tmuxp" = "latest"
+
+# go tools
+"go:github.com/iximiuz/labctl" = "latest"
+"go:github.com/joshmedeski/sesh/v2" = "latest"
+
+# cargo tools
+"cargo:raine/workmux" = "latest"
+
+[env]
+GOPATH = "{{env.HOME}}/.go"
+
+[settings.python]
+uv_venv_auto = "create|source"
