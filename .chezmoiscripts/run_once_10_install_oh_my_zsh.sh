@@ -8,12 +8,18 @@ if [[ ! -d "$oh_my_zsh_dir" ]]; then
 	git clone https://github.com/ohmyzsh/ohmyzsh.git "$oh_my_zsh_dir"
 fi
 
-zsh_custom_dir="${ZSH_CUSTOM:-$oh_my_zsh_dir/custom}"
-for plugin in zsh-autosuggestions zsh-syntax-highlighting; do
-	plugin_dir="$zsh_custom_dir/plugins/$plugin"
+install_plugin() {
+	local repo="$1"
+	local plugin="${repo#*/}"
+	local plugin_dir="$zsh_custom_dir/plugins/$plugin"
 	if [[ ! -d "$plugin_dir" ]]; then
-		git clone "https://github.com/zsh-users/$plugin.git" "$plugin_dir"
+		git clone "https://github.com/$repo.git" "$plugin_dir"
 	fi
-done
+}
+
+zsh_custom_dir="${ZSH_CUSTOM:-$oh_my_zsh_dir/custom}"
+install_plugin "zsh-users/zsh-autosuggestions"
+install_plugin "zsh-users/zsh-syntax-highlighting"
+install_plugin "Aloxaf/fzf-tab"
 
 mkdir -p "$HOME/.zshrc.d"
