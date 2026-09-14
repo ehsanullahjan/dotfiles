@@ -1,3 +1,5 @@
+# vim:ft=conf
+
 # Use C-s as the prefix key
 unbind C-b
 set -g prefix C-s
@@ -153,11 +155,6 @@ set -agF status-right "#{E:@catppuccin_status_ram}"
 # Enable cpu, ram and battery monitoring plugins
 set -g @plugin "tmux-plugins/tmux-cpu"
 set -g @plugin "tmux-plugins/tmux-battery"
-
-# Enable & customize tmux resurrect plugin for persistent sessions
-set -g @plugin "tmux-plugins/tmux-resurrect"
-set -g @resurrect-save "M-s"
-set -g @resurrect-restore "M-r"
 
 # Load tmux plugins
 run '~/.config/tmux/plugins/tpm/tpm'
