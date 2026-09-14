@@ -35,3 +35,8 @@ tmux -S "$socket" source - <<-EOF
 	run-shell $plugin
 	refresh-client -S
 EOF
+
+# Force tmux clients connected to this socket to drop their background color cache [0].
+# This works only once every 30 seconds, and is needed only if the host terminal does
+# not support CSI 2031 (e.g., Alacritty).
+tmux -S "$socket" list-clients -F '#{client_pid}' | xargs -r -I{} kill -SIGWINCH {}
