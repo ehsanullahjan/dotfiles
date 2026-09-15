@@ -87,9 +87,11 @@ command -v zoxide >/dev/null && plugins+=(zoxide)
 
 # Plugin configuration
 # zstyle ':omz:plugins:pipenv' auto-shell no
+zstyle ':fzf-tab:*' use-fzf-default-opts yes
+[[ -f "$HOME/.config/fzf/theme.sh" ]] && source "$HOME/.config/fzf/theme.sh"
 
 # Load oh-my-zsh
-source $ZSH/oh-my-zsh.sh
+source "$ZSH/oh-my-zsh.sh"
 
 # User configuration
 
