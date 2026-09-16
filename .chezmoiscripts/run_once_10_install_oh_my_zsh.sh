@@ -18,8 +18,9 @@ install_plugin() {
 }
 
 zsh_custom_dir="${ZSH_CUSTOM:-$oh_my_zsh_dir/custom}"
+install_plugin "Aloxaf/fzf-tab"
+install_plugin "ehsanullahjan/zsh-sesh"
 install_plugin "zsh-users/zsh-autosuggestions"
 install_plugin "zsh-users/zsh-syntax-highlighting"
-install_plugin "Aloxaf/fzf-tab"
 
 mkdir -p "$HOME/.zshrc.d"
