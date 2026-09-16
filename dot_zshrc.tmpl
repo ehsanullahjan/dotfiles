@@ -145,6 +145,6 @@ source "$HOME/.aliases"
 setopt NO_COMPLETE_ALIASES
 setopt HIST_REDUCE_BLANKS
 setopt HIST_IGNORE_ALL_DUPS
-export HISTSIZE=50000
-export SAVEHIST=50000
+export HISTSIZE={{ .shell_hist_size }}
+export SAVEHIST={{ .shell_hist_size }}
 export HISTORY_IGNORE={{ .zsh_history_ignore | quote }}
