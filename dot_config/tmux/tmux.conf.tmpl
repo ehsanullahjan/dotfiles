@@ -98,6 +98,11 @@ bind -r Down resize-pane -D 5
 bind -r Up resize-pane -U 5
 bind -r Right resize-pane -R 5
 
+# Set custom bindings for killing tmux objects
+bind-key x kill-pane
+bind-key X kill-window
+bind-key M-x kill-session
+
 # Enable vi keys for buffer management
 setw -g mode-keys vi
 bind -T copy-mode-vi v send -X begin-selection
