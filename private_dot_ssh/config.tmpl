@@ -1,0 +1,15 @@
+# vim:ft=sshconfig
+
+Host *
+    ServerAliveInterval {{ .ssh_server_alive_interval }}
+    ServerAliveCountMax  {{ .ssh_server_alive_retries }}
+    IdentityFile {{ .ssh_identity_file }}
+
+Host bitbucket.com
+    User git
+
+Host github.com
+    User git
+
+Host gitlab.com
+    User git
