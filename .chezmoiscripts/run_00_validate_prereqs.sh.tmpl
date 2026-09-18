@@ -1,6 +1,8 @@
 #!/usr/bin/env bash
 # vim:ft=bash
 
+echo "::group:: ===$(basename "$0")==="
+
 set -euo pipefail
 [[ ${DEBUG:-0} == 1 ]] && set -x
 
@@ -16,4 +18,5 @@ require_commands() {
 }
 
 require_commands curl git starship
-require_commands curl git
+
+echo "::endgroup::"

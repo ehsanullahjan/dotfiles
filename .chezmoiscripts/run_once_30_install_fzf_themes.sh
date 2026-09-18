@@ -1,5 +1,7 @@
 #!/usr/bin/env bash
 
+echo "::group:: ===$(basename "$0")==="
+
 set -euo pipefail
 [[ ${DEBUG:-0} == 1 ]] && set -x
 
@@ -9,6 +11,9 @@ mkdir -p "$themes_dir"
 for flavor in latte frappe macchiato mocha; do
 	theme_file="$themes_dir/catppuccin-$flavor.sh"
 	if [[ ! -f "$theme_file" ]]; then
+		echo "Downloading fzf theme: $(basename "$theme_file")"
 		curl -fL -o "$theme_file" "https://github.com/catppuccin/fzf/raw/main/themes/catppuccin-fzf-$flavor.sh"
 	fi
 done
+
+echo "::endgroup::"
