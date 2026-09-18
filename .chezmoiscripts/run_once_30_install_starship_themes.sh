@@ -14,6 +14,7 @@ themes=(
 	pure-preset
 	tokyo-night
 )
+touch "$themes_dir/default.toml"
 for theme in "${themes[@]}"; do
 	theme_file="$themes_dir/$theme.toml"
 	if [[ ! -f "$theme_file" ]]; then
