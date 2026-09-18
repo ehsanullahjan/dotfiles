@@ -8,6 +8,7 @@ else
 fi
 
 # Set tools env
+export FZF_DEFAULT_OPTS_FILE="${XDG_RUNTIME_DIR:-/tmp}/fzf.theme"
 # export FZF_ALT_C_COMMAND=""
 # export SYSTEMD_PAGER=
 # export LESSOPEN="|lesspipe.sh %s"
