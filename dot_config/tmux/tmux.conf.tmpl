@@ -76,7 +76,7 @@ bind-key -n M-8 select-window -t 8
 bind-key -n M-9 select-window -t 9
 
 # Create windows, panes and popups with cwd
-# bind c new-window -c "#{pane_current_path}"
+bind -n M-c new-window -c "#{pane_current_path}"
 
 # Create panes and popups with cwd
 bind -n M-s split-window -v -c "#{pane_current_path}"
