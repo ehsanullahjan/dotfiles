@@ -8,3 +8,8 @@ if [[ ! -d "$lazyvim_dir" ]]; then
 	git clone https://github.com/LazyVim/starter "$lazyvim_dir"
 	rm -rf "$lazyvim_dir/.git"
 fi
+
+if command -v nvim >/dev/null; then
+	nvim --headless "+Lazy! sync" +qa
+	nvim --headless "+Lazy! update mason.nvim" +qa
+fi
