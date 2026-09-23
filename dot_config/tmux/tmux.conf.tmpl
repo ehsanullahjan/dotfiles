@@ -163,6 +163,8 @@ set -g @plugin "tmux-plugins/tmux-battery"
 
 # Enable tmux-sesh plugin
 set -g @plugin "ehsanullahjan/tmux-sesh"
+set -g detach-on-destroy off
+bind -N "last-session (via sesh) " L run-shell "sesh last"
 
 # Load tmux plugins
 run '~/.config/tmux/plugins/tpm/tpm'
