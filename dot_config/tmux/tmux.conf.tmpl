@@ -13,10 +13,10 @@ bind R source ~/.config/tmux/tmux.conf \;\
 set -g default-shell {{ .shell_path }}
 set -g default-command ""
 
-# Upgrade terminal
+# Configure terminal capabilities
 set -g allow-passthrough on
 set -g default-terminal "tmux-256color"
-set -as terminal-features ",tmux-256color:RGB"
+set -as terminal-features ",xterm*:RGB"
 
 # Set terminal title
 #   #S = Session name
