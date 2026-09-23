@@ -1,0 +1,31 @@
+#!/usr/bin/env bash
+# vim:ft=bash
+
+echo "::group:: ===$(basename "$0")==="
+
+set -euo pipefail
+[[ ${DEBUG:-0} == 1 ]] && set -x
+
+fonts_dir="$HOME/.local/share/fonts"
+mkdir -p "$fonts_dir"
+
+fonts=(
+    {{ .font_nerd_fonts }}
+)
+for font in "${fonts[@]}"; do
+    font_dir="$fonts_dir/$font"
+    if [ ! -d "$font_dir" ]; then
+        source_asset="https://github.com/ryanoasis/nerd-fonts/releases/latest/download/$font.zip"
+        target_asset="/tmp/$font.zip"
+
+        echo "Downloading font: $font"
+        curl -fL -o "$target_asset" "$source_asset"
+        unzip "$target_asset" -d "$font_dir"
+        rm "$target_asset"
+    fi
+done
+
+echo "Refreshing fonts cache"
+fc-cache -f -v
+
+echo "::endgroup::"
