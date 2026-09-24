@@ -10,15 +10,11 @@ themes_dir="$HOME/.config/fzf/themes"
 mkdir -p "$themes_dir"
 
 for flavor in latte frappe macchiato mocha; do
-    theme_file="$themes_dir/catppuccin-$flavor.sh"
+    theme_file="$themes_dir/catppuccin-$flavor.rc"
     if [[ ! -f "$theme_file" ]]; then
         echo "Downloading fzf theme: $(basename "$theme_file")"
-        curl -fL -o "$theme_file" "https://github.com/catppuccin/fzf/raw/main/themes/catppuccin-fzf-$flavor.sh"
+        curl -fL -o "$theme_file" "https://github.com/catppuccin/fzf/raw/main/themes/catppuccin-fzf-$flavor.rc"
     fi
 done
-
-echo "Linking default fzf theme"
-source "$themes_dir/{{ .terminal_theme }}.sh"
-echo "$FZF_DEFAULT_OPTS" >"${XDG_RUNTIME_DIR:-/tmp}/fzf.theme"
 
 echo "::endgroup::"
