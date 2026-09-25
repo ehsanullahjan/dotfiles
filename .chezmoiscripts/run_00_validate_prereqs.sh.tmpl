@@ -17,6 +17,14 @@ require_commands() {
     done
 }
 
-require_commands bat curl fc-cache git starship unzip
+commands=(
+    bat
+    curl
+    fc-cache
+    git
+    starship
+    unzip
+)
+require_commands "${commands[@]}"
 
 echo "::endgroup::"
