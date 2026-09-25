@@ -1,4 +1,4 @@
-# vim:ft=conf
+# vim:ft=tmux.conf
 
 # Use C-s as the prefix key
 unbind C-b
@@ -115,8 +115,8 @@ bind -T copy-mode-vi MouseDragEnd1Pane send -X copy-pipe-and-cancel {{ .clipboar
 bind-key -n MouseDown2Pane paste-buffer
 
 # Enable functional mouse-scrolling based behavior in all scenarios
-bind -n WheelUpPane   if -F "#{mouse_any_flag}" "send -M" "if -F '#{alternate_on}' 'send -N 3 Up'   'copy-mode -e'"
-bind -n WheelDownPane if -F "#{mouse_any_flag}" "send -M" "if -F '#{alternate_on}' 'send -N 3 Down' 'send -M'"
+bind -n WheelUpPane   if -F "#{mouse_any_flag}" "send -M" "if -F '#{alternate_on}' 'send -N {{ .terminal_scrollback_multiplier }} Up'   'copy-mode -e'"
+bind -n WheelDownPane if -F "#{mouse_any_flag}" "send -M" "if -F '#{alternate_on}' 'send -N {{ .terminal_scrollback_multiplier }} Down' 'send -M'"
 
 # Set custom bindings for useful commands
 bind s setw synchronize-panes

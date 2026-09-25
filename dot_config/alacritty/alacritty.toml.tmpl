@@ -26,7 +26,7 @@ option_as_alt = "both"
 
 [scrolling]
 history = {{ .terminal_scrollback_limit }}
-multiplier = 3
+multiplier = {{ .terminal_scrollback_multiplier }}
 
 [font]
 normal = { family = {{ .font_mono_family | quote }} }
