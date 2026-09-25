@@ -50,25 +50,7 @@ keybind = alt+up=unbind
 keybind = alt+right=unbind
 
 # alt + digit is used for window nav in tmux
-keybind = alt+digit_1=unbind
-keybind = alt+digit_2=unbind
-keybind = alt+digit_3=unbind
-keybind = alt+digit_4=unbind
-keybind = alt+digit_5=unbind
-keybind = alt+digit_6=unbind
-keybind = alt+digit_7=unbind
-keybind = alt+digit_8=unbind
-keybind = alt+digit_9=unbind
-keybind = alt+digit_0=unbind
-
-# alt + digit is used for window nav in tmux
-keybind = alt+1=unbind
-keybind = alt+2=unbind
-keybind = alt+3=unbind
-keybind = alt+4=unbind
-keybind = alt+5=unbind
-keybind = alt+6=unbind
-keybind = alt+7=unbind
-keybind = alt+8=unbind
-keybind = alt+9=unbind
-keybind = alt+0=unbind
+{{- range $i := until 10 }}
+keybind = alt+{{ $i }}=unbind
+keybind = alt+digit_{{ $i }}=unbind
+{{- end }}
