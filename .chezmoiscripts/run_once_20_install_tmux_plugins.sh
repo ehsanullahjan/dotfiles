@@ -19,7 +19,7 @@ fi
 catppuccin_plugin_dir="$plugins_dir/catppuccin"
 if [[ ! -d "$catppuccin_plugin_dir" ]]; then
 	echo "Cloning tmux theme plugin: catppuccin"
-	git clone -b v2.3.0 https://github.com/catppuccin/tmux.git "$catppuccin_plugin_dir"
+	git clone -b v2.3.1 https://github.com/catppuccin/tmux.git "$catppuccin_plugin_dir"
 fi
 
 echo "::endgroup::"
