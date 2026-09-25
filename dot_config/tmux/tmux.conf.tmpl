@@ -114,6 +114,10 @@ bind P paste-buffer
 bind -T copy-mode-vi MouseDragEnd1Pane send -X copy-pipe-and-cancel {{ .clipboard_copy_cmd | quote }}
 bind-key -n MouseDown2Pane paste-buffer
 
+# Enable functional mouse-scrolling based behavior in all scenarios
+bind -n WheelUpPane   if -F "#{mouse_any_flag}" "send -M" "if -F '#{alternate_on}' 'send -N 3 Up'   'copy-mode -e'"
+bind -n WheelDownPane if -F "#{mouse_any_flag}" "send -M" "if -F '#{alternate_on}' 'send -N 3 Down' 'send -M'"
+
 # Set custom bindings for useful commands
 bind s setw synchronize-panes
 

@@ -11,7 +11,7 @@ fi
 export FZF_DEFAULT_OPTS_FILE="$HOME/.config/fzf/theme.rc"
 # export FZF_ALT_C_COMMAND=""
 # export SYSTEMD_PAGER=
-export LESS="-R -F --mouse"
+export LESS="-R -F"
 # export LESSOPEN="|lesspipe.sh %s"
 # export LESS_ADVANCED_PREPROCESSOR=1
 
