@@ -16,9 +16,7 @@ for flavor in latte frappe macchiato mocha; do
 	fi
 done
 
-if command -v bat >/dev/null; then
-	echo "Building bat cache"
-	bat cache --build
-fi
+echo "Building bat cache"
+bat cache --build
 
 echo "::endgroup::"
