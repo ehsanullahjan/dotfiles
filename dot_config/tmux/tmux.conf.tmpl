@@ -115,7 +115,7 @@ bind -T copy-mode-vi MouseDragEnd1Pane send -X copy-pipe-and-cancel {{ .clipboar
 bind-key -n MouseDown2Pane paste-buffer
 
 # Enable functional mouse-scrolling based behavior in all scenarios
-bind -n WheelUpPane   if -F "#{mouse_any_flag}" "send -M" "if -F '#{alternate_on}' 'send -N {{ .terminal_scrollback_multiplier }} Up'   'copy-mode -e'"
+bind -n WheelUpPane   if -F "#{mouse_any_flag}" "send -M" "if -F '#{alternate_on}' 'send -N {{ .terminal_scrollback_multiplier }} Up'   'copy-mode -e'; send -N {{ .terminal_scrollback_multiplier }} Up"
 bind -n WheelDownPane if -F "#{mouse_any_flag}" "send -M" "if -F '#{alternate_on}' 'send -N {{ .terminal_scrollback_multiplier }} Down' 'send -M'"
 
 # Set custom bindings for useful commands
