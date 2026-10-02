@@ -27,7 +27,6 @@ elif command -v lsd >/dev/null; then
 fi
 
 alias ll='ls -l'
-alias llt='lt -l'
 alias l.='ls -d .*'
 alias l='ls -la'
 alias la='ls -lA'
