@@ -1,9 +1,9 @@
 # vim:ft=tmux.conf
 
-# Use C-s as the prefix key
+# Customize prefix key
 unbind C-b
-set -g prefix C-s
-bind C-s send-prefix
+set -g prefix {{ .tmux_terminal_prefix }}
+bind {{ .tmux_terminal_prefix }} send-prefix
 
 # Reload config with P-r
 bind R source ~/.config/tmux/tmux.conf \;\
@@ -15,8 +15,8 @@ set -g default-command ""
 
 # Configure terminal capabilities
 set -g allow-passthrough on
-set -g default-terminal "tmux-256color"
-set -as terminal-features ",xterm*:RGB"
+set -g default-terminal {{ .tmux_terminal_type | quote }}
+set -as terminal-features {{ .tmux_terminal_features | quote }}
 
 # Set terminal title
 #   #S = Session name
@@ -39,7 +39,7 @@ set -g repeat-time 500
 set -g display-time 1000
 set -g status-interval 5
 set -g status-keys emacs
-set -g status-position top
+set -g status-position {{ .tmux_status_position }}
 set -g status-justify "left"
 set -g status-left-length 256
 set -g status-right-length 512
