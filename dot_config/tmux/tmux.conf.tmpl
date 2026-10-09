@@ -27,11 +27,11 @@ set -as terminal-features {{ .tmux_terminal_features | quote }}
 set -g set-titles on
 set -g set-titles-string "#h:#S:#W ➜ #T"
 
-# # Set window title to `base-dir [pane-cmd]` unless explicitly renamed
-# set -g automatic-rename on
-# set -g automatic-rename-format '#{b:pane_current_path} [#{pane_current_command}]'
-# set -g window-status-format '#W'
-# set -g window-status-current-format '#W'
+# Set window title to `base-dir [pane-cmd]` unless explicitly renamed
+set -g automatic-rename on
+set -g automatic-rename-format '#{b:pane_current_path} [#{pane_current_command}]'
+set -g window-status-format '#W'
+set -g window-status-current-format '#W'
 
 # Set sensible options
 set -sg escape-time 0
@@ -168,10 +168,6 @@ set -g @plugin "tmux-plugins/tmux-battery"
 set -g @plugin "ehsanullahjan/tmux-sesh"
 set -g detach-on-destroy on
 bind -N "last-session (via sesh) " L run-shell "sesh last"
-
-# Enable tmux-nerd-font-window-name plugin
-set -g @plugin 'joshmedeski/tmux-nerd-font-window-name'
-set -g automatic-rename-format "#{window_icon} #{b:pane_current_path}"
 
 # Load tmux plugins
 run '~/.config/tmux/plugins/tpm/tpm'
