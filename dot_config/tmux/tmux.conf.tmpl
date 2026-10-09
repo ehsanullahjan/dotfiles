@@ -76,8 +76,6 @@ bind-key -n M-9 select-window -t 9
 
 # Create windows, panes and popups with cwd
 bind -n M-c new-window -c "#{pane_current_path}"
-
-# Create panes and popups with cwd
 bind -n M-s split-window -v -c "#{pane_current_path}"
 bind -n M-v split-window -h -c "#{pane_current_path}"
 
@@ -162,7 +160,7 @@ set -agF status-right "#{E:@catppuccin_status_ram}"
 
 # Enable cpu, ram and battery monitoring plugins
 set -g @plugin "tmux-plugins/tmux-cpu"
-set -g @plugin "tmux-plugins/tmux-battery"
+# set -g @plugin "tmux-plugins/tmux-battery"
 
 # Enable tmux-sesh plugin
 set -g @plugin "ehsanullahjan/tmux-sesh"
